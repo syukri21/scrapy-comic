@@ -33,6 +33,8 @@ class Comic(scrapy.Spider):
 
         chapters_url = response.xpath(
             "//div[@class='bixbox bxcl']/ul/li/span[@class='lchx']/a/@href").extract()
+
+        chapters_url = chapters_url
         chaptersName = response.xpath(
             "//div[@class='bixbox bxcl']/ul/li/span[@class='lchx']/a/text()").extract()
 
@@ -106,10 +108,12 @@ class Comic(scrapy.Spider):
         tipe = response.xpath(
             '//article/div[1]/div[2]/div[2]/div[1]/span[5]/a/text()').get()
 
-        rating = response.xpath(
-            '//article/div[1]/div[2]/div[3]/div[1]/strong/text()').get()
+        rating = response.xpath('//article//strong/text()').get()
         rating = rating.replace("Rating ", '')  # remove string 'Rating '
-        rating = float(rating)  # change to FLoat
+        try:
+            rating = float(rating)  # change to FLoat
+        except ValueError:
+            rating = 0.0
 
         released = response.xpath(
             '//article/div[1]/div[2]/div[2]/div[1]/span[3]/text()').get()
@@ -128,7 +132,7 @@ class Comic(scrapy.Spider):
             released=released,
             synopsis=synopsis,
             genres={
-                "set": genres
+                'create' :list(map(lambda x: {"genre" : x}, genres))
             },
             postedOn=current_time,
             postedBy="uki",

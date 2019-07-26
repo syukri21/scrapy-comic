@@ -9,7 +9,10 @@ def save_comic(item):
         "data": item
     }
 
+    
+
     variables = json.dumps(variables)
+  
 
     headers = {
         'Accept-Encoding': 'gzip, deflate, br',

@@ -12,6 +12,7 @@ class Comics(Spider):
 
     def start_requests(self):
         urls = ["https://kiryuu.co/"]
+        
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -20,10 +21,8 @@ class Comics(Spider):
             '//div[@class="listupd"]/div[@class="utao"]/div/div[@class="luf"]/a[@class="series"]/@href'
         ).extract()
 
-        new_comics = [comics_url[0], comics_url[1]]
-
         # loop comics_url and request each of that url
-        for i, url in enumerate(new_comics):
+        for i, url in enumerate(comics_url):
             url = response.urljoin(url)
             request = scrapy.Request(
                 url=url, callback=Comic().parse_comic,)
