@@ -132,7 +132,7 @@ class Comic(scrapy.Spider):
             released=released,
             synopsis=synopsis,
             genres={
-                'create' :list(map(lambda x: {"genre" : x}, genres))
+                'create': list(map(lambda x: {"genre": x}, genres))
             },
             postedOn=current_time,
             postedBy="uki",

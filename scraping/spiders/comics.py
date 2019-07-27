@@ -12,7 +12,7 @@ class Comics(Spider):
 
     def start_requests(self):
         urls = ["https://kiryuu.co/"]
-        
+
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
