@@ -76,6 +76,7 @@ class ScrapingPipeline(object):
 
         updateData = {
             "data": {
+                "updateOn": data["updateOn"],
                 "chapters": data["chapters"]
             },
             "where": {

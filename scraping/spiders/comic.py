@@ -47,8 +47,10 @@ class Comic(scrapy.Spider):
                     old[manga_id]["postedOn"] = postedOn
                     # loop for each urls
                     for i, url in enumerate(chapters_url):
+
                         # check if chapter  is new chapter
                         if chaptersName[i] not in old[manga_id]["chapters"]:
+
                             # append new chapter
                             old[manga_id]["chapters"].append(chaptersName[i])
                             url = response.urljoin(url)
