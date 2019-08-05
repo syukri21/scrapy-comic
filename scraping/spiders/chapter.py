@@ -8,7 +8,8 @@ import json
 
 
 t = time.localtime()
-current_time = time.strftime("%Y-%m-%d", t)
+current_time = time.strftime("%Y-%m-%dT%H:%M:%S", t)[:-3]
+
 
 
 class Chapter(scrapy.Spider):

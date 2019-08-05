@@ -3,16 +3,21 @@ import scrapy
 from scraping.spiders.chapter import Chapter
 from scraping.items import ComicItem
 
-import time
 
 
 from scraping.olddata import old
 from scraping.spiders.utility import write_old
 
 
-t = time.localtime()
 
-current_time = time.strftime("%Y-%m-%d", t)
+
+import time
+
+
+
+t = time.localtime()
+current_time = time.strftime("%Y-%m-%dT%H:%M:%S", t)[:-3]
+
 
 
 # Search for an upper case "S" character in the beginning of a word, and print the word:

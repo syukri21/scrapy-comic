@@ -65,7 +65,7 @@ class ScrapingPipeline(object):
 
     def parse_update_comic(self, item):
         data = dict(item)
-
+ 
         if data.get("update"):
             del data["update"]
         if data.get("old"):
