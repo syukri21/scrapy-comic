@@ -28,7 +28,7 @@ def save_comic(item):
 
     data = '{"query":"mutation addComic($data: ComicCreateInput!, $genres: [String!]!) {\\n  createComic(data: $data, genres: $genres) {\\n    title\\n  }\\n}\\n","variables":' + variables + '}'
 
-    response = requests.post('http://localhost:4000/query',
+    response = requests.post('http://202.83.122.72:4000/query',
                              headers=headers, data=data)
 
     return response
