@@ -2,6 +2,8 @@
 import requests
 import json
 
+from scraping.spiders.env import envLocal, envServer
+
 
 def update_comic(item):
 
@@ -20,7 +22,7 @@ def update_comic(item):
 
     data = '{"query":"mutation UpdateComic($data: ComicUpdateInput!, $where: ComicWhereUniqueInput!) {\\n  updateComic(data: $data, where: $where) {\\n    title\\n  }\\n}\\n","variables":' + variables + '}'
 
-    response = requests.post('http://202.83.122.72:4000/query',
+    response = requests.post(envServer,
                              headers=headers, data=data)
 
     return response
