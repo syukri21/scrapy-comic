@@ -11,7 +11,7 @@ class Comics(Spider):
     name = "comics"
 
     def start_requests(self):
-        urls = ["https://kiryuu.co/"]
+        urls = ["https://kiryuu.co/page/2/"]
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

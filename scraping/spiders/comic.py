@@ -4,20 +4,15 @@ from scraping.spiders.chapter import Chapter
 from scraping.items import ComicItem
 
 
-
 from scraping.olddata import old
 from scraping.spiders.utility import write_old
-
-
 
 
 import time
 
 
-
 t = time.localtime()
 current_time = time.strftime("%Y-%m-%dT%H:%M:%S", t)[:-3]
-
 
 
 # Search for an upper case "S" character in the beginning of a word, and print the word:
@@ -106,7 +101,10 @@ class Comic(scrapy.Spider):
             "//div[@class='infox']/div[@class='spe']/span/a[@rel='tag']/text()").extract()
 
         author = response.xpath(
-            '//article/div[1]/div[2]/div[2]/div[1]/span[4]/text()').get()
+            '//article//div[@class="spe"]/span[4]/text()').get()
+        if len(author.strip()) == 0:
+            author = response.xpath(
+                '//article//div[@class="spe"]/span[3]/text()').get()
 
         status = response.xpath(
             '//article/div[1]/div[2]/div[2]/div[1]/span[2]/text()').get()
