@@ -12,13 +12,14 @@ import time
 
 
 t = time.localtime()
-current_time = time.strftime("%Y-%m-%dT%H:%M:%S", t)[:-3]
+current_time = time.strftime("%Y-%m-%dT%H:%M:%S", t)
 
 
 # Search for an upper case "S" character in the beginning of a word, and print the word:
 
 
 class Comic(scrapy.Spider):
+
     name = "comic"
 
     data = []
@@ -139,9 +140,9 @@ class Comic(scrapy.Spider):
             genres={
                 'create': list(map(lambda x: {"genre": x}, genres))
             },
-            postedOn=current_time,
+            postedOn=current_time+"Z",
             postedBy="uki",
-            updateOn=current_time,
+            updateOn=current_time+"Z",
             chapters={
                 "create": []
             }

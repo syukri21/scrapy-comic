@@ -7,11 +7,15 @@ from scraping.spiders.utility import write_data
 from scrapy import signals, Spider
 
 
+
+
+
+
 class Comics(Spider):
     name = "comics"
 
     def start_requests(self):
-        urls = ["https://kiryuu.co/page/2/"]
+        urls = ["https://kiryuu.co/"]
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -22,7 +26,7 @@ class Comics(Spider):
         ).extract()
 
         # loop comics_url and request each of that url
-        for i, url in enumerate(comics_url):
+        for i, url in enumerate(comics_url[:1]):
             url = response.urljoin(url)
             request = scrapy.Request(
                 url=url, callback=Comic().parse_comic,)
