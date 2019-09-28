@@ -92,6 +92,10 @@ class Comic(scrapy.Spider):
         title = response.xpath(
             "//div[@class='infox']/h1/text()").get()
 
+        postId = response.xpath("//article/@id").get()
+        postId = postId.replace("post-", "")
+    
+
         image = response.xpath(
             '//article/div[1]/div[2]/div[1]/img/@src').get()
 
@@ -130,6 +134,7 @@ class Comic(scrapy.Spider):
         comicItem = ComicItem(
             title=title,
             image=image,
+            postId=postId,
             japaneseTitle=japaneseTitle,
             author=author,
             status=status,

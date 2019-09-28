@@ -26,7 +26,7 @@ class Comics(Spider):
         ).extract()
 
         # loop comics_url and request each of that url
-        for i, url in enumerate(comics_url[:1]):
+        for i, url in enumerate(comics_url):
             url = response.urljoin(url)
             request = scrapy.Request(
                 url=url, callback=Comic().parse_comic,)

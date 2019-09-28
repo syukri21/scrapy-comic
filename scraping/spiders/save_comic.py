@@ -2,7 +2,7 @@
 import requests
 import json
 
-from scraping.spiders.env import envLocal, envServer
+from scraping.spiders.env import  envServer
 
 
 def save_comic(item):

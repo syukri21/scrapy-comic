@@ -12,6 +12,7 @@ class ComicItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()
     author = scrapy.Field()
+    postId = scrapy.Field()
     japaneseTitle = scrapy.Field()
     status = scrapy.Field()
     image = scrapy.Field()
